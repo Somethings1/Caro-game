@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Caro Game</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="sketch.js?update=1"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Tic-Tac-Toe-Game.png">
+    </head>
+    <body>
+        <p class="author">Created by Nguyen Trung Long</p>
+        <div class="start screen">
+            <p class="header">Game Header</p>
+            <div class="button btn-new-start">New Game</div>
+            <div class="button btn-setting">Settings</div>
+        </div>
+        <div class="settings screen">
+            <p class="header">Settings</p>
+            <form>
+
+            </form>
+            <div class="button out-setting">Main Menu</div>
+        </div>
+        <div class="container screen">
+
+            <!-- #region Player -->
+            <div class="col col-1 currentPlayer">
+                <p class="showTimer header"></p>
+                <p class="showName header"></p>
+                <img src="theX.png" alt="The X" class="showImg">
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region Chess board and others main screen -->
+            <div class="col col-2 chessBoard">
+
+                <!-- Chess board -->
+                <table class="table" cellspacing="0"></table>
+
+                <!-- Show on when a player won -->
+                <div class="winner canvas">
+                    <h1 class="header">Game overed!</h1>
+                    <h1 class="winnerText header">The winner is: </h1>
+                    <div class="button btn-reset">Play Again</div>
+                </div>
+
+                <!-- Show on when the pause button was clicked -->
+                <div class="pause canvas">
+                    <h1 class="header">Game Paused</h1>
+                    <div class="button btn-continue">Continue</div>
+                </div>
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region History -->
+            <div class="col col-3">
+                <p class="header">History</p>
+                <table class="history" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Stt</th>
+                            <th>Winner</th>
+                        </tr>
+                    </thead>
+                    <tbody class="history-append">
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region Button col -->
+            <div class="btn-col">
+                <div class="button btn-new">New Game</div>
+                <div class="button btn-pause">Pause</div>
+                <div class="button btn-setting">Setting</div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </body>
+</html>
