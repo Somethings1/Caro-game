@@ -149,3 +149,53 @@ th
     border: none;
     font-family: Verdana;
 }
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 80%; /* Full-width */
+    height: 5px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    border-radius: 5px;
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    border-radius: 50%;
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+input[type="text"]
+{
+    width: 80%;
+    padding: 5px;
+    font-size: 12px;
+    border: none;
+    color: grey;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    transition: .2s ease;
+}
+
+input[type="text"]:focus
+{
+    color: black;
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}

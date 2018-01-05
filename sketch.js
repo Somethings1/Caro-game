@@ -83,13 +83,13 @@ function IsEndRightUp(index)
     up = 1;
     down = 0;
     _temp = index;
-    while(index % width != width - 1 && IdList[_temp] == IdList[_temp - width + 1])
+    while(index % width != width && IdList[_temp] == IdList[_temp - width + 1])
     {
         up += 1;
         _temp -= (width - 1);
     }
     _temp = index;
-    while(index % width != width - 1 && IdList[_temp] == IdList[_temp + width - 1])
+    while(index % width != width && IdList[_temp] == IdList[_temp + width - 1])
     {
         up += 1;
         _temp += (width - 1);
@@ -104,13 +104,13 @@ function IsEndRightDown(index)
     up = 1;
     down = 0;
     _temp = index;
-    while(index % width != width - 1 && IdList[_temp] == IdList[_temp - width - 1])
+    while(index % width != width && IdList[_temp] == IdList[_temp - width - 1])
     {
         up += 1;
         _temp -= (width + 1);
     }
     _temp = index;
-    while(index % width != width - 1 && IdList[_temp] == IdList[_temp + width + 1])
+    while(index % width != width && IdList[_temp] == IdList[_temp + width + 1])
     {
         up += 1;
         _temp += (width + 1);
@@ -149,6 +149,8 @@ function Update()
     $(".canvas").css("top", $(".table").css("top"));
     $(".showName").text(now == 1 ? xName : oName);
     $(".col-3").css({"display": $(window).width() <= 980 ? "none" : "block"});
+    $(".td").css("width", 500 / (width >= height ? width : height) + "px");
+    $(".td").css("height", 500 / (width >= height ? width : height) + "px");
 }
 
 function Reset()
