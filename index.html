@@ -3,8 +3,9 @@
         <title>Caro Game</title>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="sketch.js?update=1"></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?update=1">
         <link rel="icon" type="image/png" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Tic-Tac-Toe-Game.png">
+        <meta charset="utf-8">
     </head>
     <body>
         <p class="author">Created by Nguyen Trung Long</p>
@@ -16,9 +17,43 @@
         <div class="settings screen">
             <p class="header">Settings</p>
             <form>
-
+                <table border="0">
+                    <tr class="setting-row">
+                        <td>Số ô một hàng để thắng</td>
+                        <td><input type="range" name="step" id="step" min="3" max="7" value="5"></td>
+                        <td class="show-step">5</td>
+                    </tr>
+                    <tr class="setting-row">
+                        <td>Số cột</td>
+                        <td><input type="range" name="set-width" id="set-width" min="5" max="20" value="10"></td>
+                        <td class="show-width">10</td>
+                    </tr>
+                    <tr class="setting-row">
+                        <td>Số hàng</td>
+                        <td><input type="range" name="set-height" id="set-height" min="5" max="20" value="10"></td>
+                        <td class="show-height">10</td>
+                    </tr>
+                    <tr class="setting-row">
+                        <td>Thời gian mỗi lượt</td>
+                        <td><input type="range" name="set-timer" id="set-timer" min="5" max="200" value="20"></td>
+                        <td class="show-timer">20</td>
+                    </tr>
+                    <tr class="setting-row">
+                        <td>Tên người chơi X</td>
+                        <td><input type="text" name="set-xname" id="set-xname" value="X Player"></td>
+                        <td class="show-xname">X Player</td>
+                    </tr>
+                    <tr class="setting-row">
+                        <td>Tên người chơi O</td>
+                        <td><input type="text" name="set-xname" id="set-oname" value="O Player"></td>
+                        <td class="show-oname">O player</td>
+                    </tr>
+                </table>
             </form>
-            <div class="button out-setting">Main Menu</div>
+            <div class="btn-row">
+                <div class="button out-setting" style="display:inline-block">Main Menu</div>
+                <div class="button new-game-fromstart" style="display:inline-block">Save and Play</div>
+            </div>
         </div>
         <div class="container screen">
 
@@ -70,7 +105,7 @@
 
             <!-- #region Button col -->
             <div class="btn-col">
-                <div class="button btn-new">New Game</div>
+                <div class="button btn-reset">New Game</div>
                 <div class="button btn-pause">Pause</div>
                 <div class="button btn-setting">Setting</div>
             </div>

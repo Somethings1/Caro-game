@@ -237,6 +237,48 @@ $(document).ready(function(){
     $("#step").change(function(){
         $(".show-step").text($(this).val());
     })
+    $("#set-width").change(function(){
+        $(".show-width").text($(this).val());
+    });
+    $("#set-height").change(function(){
+        $(".show-height").text($(this).val());
+    });
+    $("#set-timer").change(function(){
+        $(".show-timer").text($(this).val());
+    });
+    $("#set-xname").change(function(){
+        $(".show-xname").text($(this).val());
+    });
+    $("#set-oname").change(function(){
+        $(".show-oname").text($(this).val());
+    });
+    $(".out-setting").click(function(){
+        $("#set-width").val(width);
+        $("#set-height").val(height);
+        $("#step").val(sub);
+        $("#set-xname").val(xName);
+        $("#set-oname").val(oName);
+        $("#set-timer").val(setTimer / 1000);
+        $(".show-width").text(width);
+        $(".show-height").text(height);
+        $(".show-timer").text(setTimer / 1000);
+        $(".show-xname").text(xName);
+        $(".show-oname").text(oName);
+        $(".show-step").text(sub);
+        $(".settings").css("display", "none");
+        $(".start").css("display", "flex"); 
+    });
+    $(".new-game-fromstart").click(function(){
+        width = $("#set-width").val();
+        height = $("#set-height").val();
+        sub = $("#step").val();
+        xName = $("#set-xname").val();
+        oName = $("#set-oname").val();
+        setTimer = $("#set-timer").val() * 1000;
+        $(".settings").css("display", "none");
+        $(".container").css("display", "flex");
+        Reset();
+    });
     //#endregion
     setInterval(function(){
         Update();

@@ -63,7 +63,7 @@ td
     border: solid 1px black;
     border-radius: 5px;
     padding: 10px;
-    margin: 10px auto;
+    margin: 10px;
     cursor: default;
     text-align: center;
     transition: .2s ease;
