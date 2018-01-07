@@ -1,3 +1,9 @@
+/*
+    Coded by Nguyen Trung Long
+    Last edit 07/01/2018
+    Unminified
+*/
+
 *
 {
     margin: 0;
@@ -40,8 +46,6 @@
 
 td
 {
-    width: 50px;
-    height: 50px;
     background-size: 100% 100%;
     border: 1px solid black;
     box-sizing: border-box;
@@ -82,7 +86,6 @@ td
 
 .col-1,.col-3
 {
-    /*border: solid 1px black;*/
     width: 20%;
     margin: 2%;
     text-align: center;
@@ -92,7 +95,6 @@ td
 .showImg
 {
     width: 50%;
-    height: auto;
 }
 
 th
@@ -107,8 +109,6 @@ th
 
 .history-append > tr > td
 {
-    width: 50%;
-    height: auto;
     border: none;
     padding: 10px;
 }
@@ -139,8 +139,8 @@ th
 .btn-col
 {
     position: fixed;
-    right: 20px;
-    top: 20px;
+    right: 10px;
+    top: 10px;
 }
 
 .setting-row td
