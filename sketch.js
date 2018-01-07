@@ -1,3 +1,10 @@
+/*
+    Coded by Nguyen Trung Long
+    Last edit 07/01/2018
+    Unminified
+*/
+
+
 var sub = 5, 
     now = 1,
     IdList, 
