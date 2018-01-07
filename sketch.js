@@ -6,10 +6,10 @@
 
 
 var sub = 5, 
-    now = 1,
+    now = 1, 
     IdList, 
-    up = 1, 
-    down = 0, 
+    up, 
+    down, 
     width = 10, 
     height = 10, 
     _temp, 
@@ -26,16 +26,10 @@ var sub = 5,
 function DrawTable()
 {
     var draw = "<tr><td class='td'>";
-    for(var i = 0; i < width - 1; i++)
-    {
-        draw += "</td><td class='td'>";
-    }
+    for(var i = 1; i < width; i++) draw += "</td><td class='td'>";
     draw += "</td></tr>";
     _temp = draw;
-    for(var i = 0; i < height - 1; i++)
-    {
-        draw += _temp;
-    }
+    for(var i = 1; i < height; i++) draw += _temp;
     IdList = new Array(width * height);
     return draw;
 }
@@ -158,6 +152,8 @@ function Update()
     $(".col-3").css({"display": $(window).width() <= 980 ? "none" : "block"});
     $(".td").css("width", 500 / (width >= height ? width : height) + "px");
     $(".td").css("height", 500 / (width >= height ? width : height) + "px");
+    $(".showImg").attr("src", now == 1 ? xSource : oSource);
+    $(".showName").text(now == 1 ? xName : oName);
 }
 
 function Reset()
@@ -167,26 +163,10 @@ function Reset()
     $(".pause").css("display", "none");
     $(".table").html(DrawTable());
     for(var i = 0; i < IdList.length; i++)
-    {
         IdList[i] = null;
-    }
     gameOver = false;
     playing = true;
     timer = setTimer;
-}
-
-function ShowPlayer()
-{  
-    if(now == 1)
-    {
-        $(".showImg").attr("src", "theX.png");
-        $(".showName").text(xName);
-    }
-    else 
-    {
-        $(".showImg").attr("src", "theY.png");
-        $(".showName").text(oName);
-    }
 }
 //#endregion
 
@@ -195,9 +175,9 @@ $(document).ready(function(){
 
     //#region JS events
     $("table").on("click", ".td", function(){
-        ShowPlayer();
+        Update();
         var index = $("td").index(this);
-        timer = 20000;
+        timer = setTimer;
         if(now == 1 && $(this).attr("id") != "checked")
         {
             $(this).css("background-image", "url(" + xSource + ")");
@@ -291,7 +271,6 @@ $(document).ready(function(){
     //#endregion
     setInterval(function(){
         Update();
-        ShowPlayer();
         if(timer <= 0)
         {
             timer = setTimer;
