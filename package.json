@@ -1,0 +1,25 @@
+{
+  "name": "js_caro_game",
+  "version": "1.0.0",
+  "description": "A simple caro game in JS",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "standard && standard --fix && node my-tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Somethings1/Caro-game.git"
+  },
+  "author": "Nguyen Trung Long",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Somethings1/Caro-game/issues"
+  },
+  "homepage": "https://github.com/Somethings1/Caro-game#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
+}
