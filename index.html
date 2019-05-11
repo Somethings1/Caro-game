@@ -5,117 +5,132 @@
     Minified
 -->
 <html>
-    <head>
-        <title>Caro Game</title>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="sketch.min.js"></script>
-        <link rel="stylesheet" href="style.min.css">
-        <link rel="icon" type="image/png" href="https://cdn3.iconfinder.com/data/icons/brain-games/1042/Tic-Tac-Toe-Game.png">
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <p class="author">Created by Nguyen Trung Long</p>
-        <div class="start screen">
-            <p class="header">Game Header</p>
-            <div class="button btn-new-start">New Game</div>
-            <div class="button btn-setting">Settings</div>
-        </div>
-        <div class="settings screen">
-            <p class="header">Settings</p>
-            <form>
-                <table border="0">
-                    <tr class="setting-row">
-                        <td>Số ô một hàng để thắng</td>
-                        <td><input type="range" name="step" id="step" min="3" max="7" value="5"></td>
-                        <td class="show-step">5</td>
-                    </tr>
-                    <tr class="setting-row">
-                        <td>Số cột</td>
-                        <td><input type="range" name="set-width" id="set-width" min="5" max="20" value="10"></td>
-                        <td class="show-width">10</td>
-                    </tr>
-                    <tr class="setting-row">
-                        <td>Số hàng</td>
-                        <td><input type="range" name="set-height" id="set-height" min="5" max="20" value="10"></td>
-                        <td class="show-height">10</td>
-                    </tr>
-                    <tr class="setting-row">
-                        <td>Thời gian mỗi lượt</td>
-                        <td><input type="range" name="set-timer" id="set-timer" min="5" max="200" value="20"></td>
-                        <td class="show-timer">20</td>
-                    </tr>
-                    <tr class="setting-row">
-                        <td>Tên người chơi X</td>
-                        <td><input type="text" name="set-xname" id="set-xname" value="X Player"></td>
-                        <td class="show-xname">X Player</td>
-                    </tr>
-                    <tr class="setting-row">
-                        <td>Tên người chơi O</td>
-                        <td><input type="text" name="set-xname" id="set-oname" value="O Player"></td>
-                        <td class="show-oname">O player</td>
-                    </tr>
-                </table>
-            </form>
-            <div class="btn-row">
-                <div class="button out-setting" style="display:inline-block">Main Menu</div>
-                <div class="button new-game-fromstart" style="display:inline-block">Save and Play</div>
+
+<head>
+    <title>Caro Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/Tic-Tac-Toe-Game.png">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <p class="author">Created by Nguyen Trung Long</p>
+    <div class="start screen">
+        <p class="header">Game Header</p>
+        <div class="button btn-new-start">New Game</div>
+        <div class="button btn-setting">Settings</div>
+    </div>
+    <div class="container screen">
+
+        <!-- #region Player -->
+        <div class="col col-1 currentPlayer">
+            <div class="showTimer header">
+                <div class="timer"></div>
+            </div>
+            <p class="showName header"></p>
+            <img src="images/theX.png" alt="The X" class="showImg">
+        </div> 
+        <!-- #endregion -->
+
+        <div class="col col-2 chessBoard">
+
+            <!-- Chess board -->
+            <table class="table" cellspacing="0"></table>
+
+            <!-- Show on when a player won -->
+            <div class="winner canvas">
+                <h1 class="header">Game overed!</h1>
+                <h1 class="winnerText header">The winner is: </h1>
+                <div class="button btn-reset">Play Again</div>
+            </div>
+
+            <!-- Show on when the pause button was clicked -->
+            <div class="pause canvas">
+                <h1 class="header">Game Paused</h1>
+                <div class="button btn-continue">Continue</div>
             </div>
         </div>
-        <div class="container screen">
 
-            <!-- #region Player -->
-            <div class="col col-1 currentPlayer">
-                <p class="showTimer header"></p>
-                <p class="showName header"></p>
-                <img src="theX.png" alt="The X" class="showImg">
-            </div>
-            <!-- #endregion -->
+        <div class="col col-3">
+            <p class="header">History</p>
+            <table class="history" cellspacing="0" id="history">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Winner</th>
+                    </tr>
+                </thead>
+                <tbody class="history-append">
 
-            <!-- #region Chess board and others main screen -->
-            <div class="col col-2 chessBoard">
-
-                <!-- Chess board -->
-                <table class="table" cellspacing="0"></table>
-
-                <!-- Show on when a player won -->
-                <div class="winner canvas">
-                    <h1 class="header">Game overed!</h1>
-                    <h1 class="winnerText header">The winner is: </h1>
-                    <div class="button btn-reset">Play Again</div>
-                </div>
-
-                <!-- Show on when the pause button was clicked -->
-                <div class="pause canvas">
-                    <h1 class="header">Game Paused</h1>
-                    <div class="button btn-continue">Continue</div>
-                </div>
-            </div>
-            <!-- #endregion -->
-
-            <!-- #region History -->
-            <div class="col col-3">
-                <p class="header">History</p>
-                <table class="history" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Stt</th>
-                            <th>Winner</th>
-                        </tr>
-                    </thead>
-                    <tbody class="history-append">
-
-                    </tbody>
-                </table>
-            </div>
-            <!-- #endregion -->
-
-            <!-- #region Button col -->
-            <div class="btn-col">
-                <div class="button btn-reset">New Game</div>
-                <div class="button btn-pause">Pause</div>
-                <div class="button btn-setting">Setting</div>
-            </div>
-            <!-- #endregion -->
+                </tbody>
+            </table>
         </div>
-    </body>
+
+        <div class="btn-row-container">
+            <div class="button btn-reset
+            btn-feature">New Game</div>
+            <div class="button btn-pause  btn-feature">Pause</div>
+            <div class="button btn-setting btn-feature">Setting</div>
+        </div>
+    </div>
+
+    <div class="settings screen">
+        <p class="header">Settings</p>
+        <form>
+            <table cellspacing="0" class="setting-table">
+                <tr class="setting-row">
+                    <td class="setting-header">Field</td>
+                    <td class="setting-header">Set</td>
+                    <td class="setting-header">Value</td>
+                </tr>
+                <tr class="setting-row">
+                    <td class="after-setting-header"></td>
+                    <td class="after-setting-header"></td>
+                    <td class="after-setting-header"></td>
+                </tr>
+                <tr class="setting-row">
+                    <td>Number in a row</td>
+                    <td><input type="range" name="step" id="step" min="3" max="7" value="5" class="slider"></td>
+                    <td class="show-step">5</td>
+                </tr>
+                <tr class="setting-row">
+                    <td>Number of columns</td>
+                    <td><input type="range" name="set-width" id="set-width" min="5" max="20" value="10" class="slider">
+                    </td>
+                    <td class="show-width">10</td>
+                </tr>
+                <tr class="setting-row">
+                    <td>Number of rows</td>
+                    <td><input type="range" name="set-height" id="set-height" min="5" max="20" value="10"
+                            class="slider"></td>
+                    <td class="show-height">10</td>
+                </tr>
+                <tr class="setting-row">
+                    <td>Cool down</td>
+                    <td><input type="range" name="set-timer" id="set-timer" min="5" max="200" value="20" class="slider">
+                    </td>
+                    <td class="show-timer">20</td>
+                </tr>
+                <tr class="setting-row">
+                    <td>X player's name</td>
+                    <td><input type="text" name="set-xName" id="set-xName" value="X Player"></td>
+                    <td class="show-xName">X Player</td>
+                </tr>
+                <tr class="setting-row">
+                    <td>O player's name</td>
+                    <td><input type="text" name="set-oName" id="set-oName" value="O Player"></td>
+                    <td class="show-oName">O player</td>
+                </tr>
+            </table>
+        </form>
+        <div class="btn-row-settings">
+            <div class="button out-setting" style="display:inline-block">Main Menu</div>
+            <div class="button save-settings" style="display:inline-block">Save and Play</div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="jquery.min.js"></script>
+    <script src="sketch.js"></script>
+</body>
+
 </html>
