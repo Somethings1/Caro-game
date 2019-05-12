@@ -28,8 +28,8 @@ let gameOver = false // Is the game over or not
 let playing = false // Is the game playing
 let timer = currentSettings.setTimer // Cool down but it changes every second
 let count = 0 // How many times played
-let fightScore = [0, 10, 100, 1000, 10000] // Score to use in AI
-let resistanceScore = [0, 5, 50, 1000, 10000] // Score to use in AI
+let fightScore // Score to use in AI
+let resistanceScore // Score to use in AI
 let moved = false
 
 const DrawTable = () => {
@@ -151,7 +151,29 @@ const IsGameOver = index => IsEndVertically(index) || IsEndHorizontally(index) |
 
 // #region AI
 
+const AIConfig = () => {
+  switch (currentSettings.sub) {
+    case 5: {
+      fightScore = [0, 2, 4, 8, 16]
+      resistanceScore = [0, 1, 2, 8, 12]
+      break
+    }
+    case 6: {
+      fightScore = [0, 2, 4, 6, 8, 16, 32]
+      resistanceScore = [0, 1, 2, 4, 16, 24]
+      break
+    }
+    case 7: {
+      fightScore = [0, 2, 4, 6, 8, 16, 32, 64]
+      resistanceScore = [0, 1, 2, 4, 8, 32, 48]
+      break
+    }
+    default: break
+  }
+}
+
 const GoToNextStep = () => {
+  AIConfig()
   let max = -Infinity // Store the maximum value in the list
   let maxIndex = 0 // Index of the max value
   let list = IdList
@@ -218,6 +240,7 @@ $(document).ready(function () {
 
   //  #region JS events
   $('table').on('click', '.td', function () {
+    if ($(this).attr('id') === 'checked') return
     UpdateEachRound()
     let index = $('td').index(this)
     timer = currentSettings.setTimer
