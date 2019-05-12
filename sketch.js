@@ -145,7 +145,17 @@ const IsEndCrosslyDown = index => {
   return CountCrosslyDown(index, IdList) >= currentSettings.sub
 }
 
-const IsGameOver = index => IsEndVertically(index) || IsEndHorizontally(index) || IsEndCrosslyUp(index) || IsEndCrosslyDown(index)
+const IsDraw = () => IdList.filter(elem => elem == null).length === 0
+
+const GetGameOverState = index => {
+  if (IsEndVertically(index) ||
+  IsEndHorizontally(index) ||
+  IsEndCrosslyUp(index) ||
+  IsEndCrosslyDown(index)) return 'win'
+  else return 'draw'
+}
+
+const IsGameOver = index => IsEndVertically(index) || IsEndHorizontally(index) || IsEndCrosslyUp(index) || IsEndCrosslyDown(index) || IsDraw()
 
 // #endregion
 
@@ -203,14 +213,19 @@ const GoToNextStep = () => {
 // #region Events
 
 // Things to do after the game has overed
-const GameOver = () => {
-  let winner = now === 1 ? currentSettings.oName : currentSettings.xName
+const GameOver = state => {
+  $('.winner').css('visibility', 'visible') // Show winner screen
   gameOver = true
   count += 1
-  $('.winner').css('visibility', 'visible') // Show winner screen
-  $('.winnerText').text('The winner is: ' + winner)
   $('.btn-pause').css('display', 'none') // Hide pause button
-  $('.history-append').append('<tr><td class="center">' + count + '</td><td class="center">' + winner + '</td></tr>')
+  if (state === 'win') {
+    let winner = now === 1 ? currentSettings.oName : currentSettings.xName
+    $('.winnerText').text('The winner is: ' + winner)
+    $('.history-append').append('<tr><td class="center">' + count + '</td><td class="center">' + winner + '</td></tr>')
+  } else {
+    $('.winnerText').text('Draw!')
+    $('.history-append').append('<tr><td class="center">' + count + '</td><td class="center">Draw</td></tr>')
+  }
 }
 
 const UpdateEachRound = () => {
@@ -256,10 +271,10 @@ $(document).ready(function () {
       $(this).attr('id', 'checked')
       IdList[index] = 'O'
     }
-    if (IsGameOver(index)) GameOver()
+    if (IsGameOver(index)) GameOver(GetGameOverState(index))
     else {
       if ($(this).attr('AI') !== 'true') GoToNextStep()
-      if (IsGameOver(index)) GameOver()
+      if (IsGameOver(index)) GameOver(GetGameOverState(index))
     }
   })
   $('.btn-reset').click(function () {
@@ -282,6 +297,12 @@ $(document).ready(function () {
     $('.container').css('display', 'none')
     $('.start').css('display', 'none')
     $('.settings').css('display', 'flex')
+  })
+  $('.btn-about').click(function () {
+    $('.modal-about').show(400)
+  })
+  $('.close').click(function () {
+    $('.modal-about').hide(400)
   })
   $('.btn-out-setting').click(function () {
     $('.settings').css('display', 'none')
