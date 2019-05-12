@@ -215,10 +215,9 @@ const GoToNextStep = () => {
 // Things to do after the game has overed
 const GameOver = state => {
   $('.winner').css('visibility', 'visible') // Show winner screen
+  $('.btn-pause').css('display', 'none') // Hide pause button
   gameOver = true
   count += 1
-  now = 1
-  $('.btn-pause').css('display', 'none') // Hide pause button
   if (state === 'win') {
     let winner = now === 1 ? currentSettings.oName : currentSettings.xName
     $('.winnerText').text('The winner is: ' + winner)
@@ -227,6 +226,7 @@ const GameOver = state => {
     $('.winnerText').text('Draw!')
     $('.history-append').append('<tr><td class="center">' + count + '</td><td class="center">Draw</td></tr>')
   }
+  now = 1
 }
 
 const UpdateEachRound = () => {
