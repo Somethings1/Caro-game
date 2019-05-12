@@ -217,6 +217,7 @@ const GameOver = state => {
   $('.winner').css('visibility', 'visible') // Show winner screen
   gameOver = true
   count += 1
+  now = 1
   $('.btn-pause').css('display', 'none') // Hide pause button
   if (state === 'win') {
     let winner = now === 1 ? currentSettings.oName : currentSettings.xName
