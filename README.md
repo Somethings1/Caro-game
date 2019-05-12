@@ -29,5 +29,4 @@ You can start from contacting the author ;)
 ### About author
 - Nguyen Trung Long
 - [Facebook](https://www.facebook.com/DaRandomGy)
->>>>>>> 4fad01e0483895a57ca6db3f40e12b1c1938ba47
 - [LinkedIn](https://www.linkedin.com/in/nguyen-long-293479163/)
