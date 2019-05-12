@@ -32,18 +32,49 @@
 .button
 {
     width: 100px;
-    border: solid 1px black;
-    border-radius: 5px;
+    border-radius: 100px;
     padding: 10px;
     margin: 10px;
+    color: #555;
+    border: 1px solid #555;
     cursor: pointer;
     text-align: center;
     transition: .2s ease;
 }
 
-.button:hover
-{
-    background-color: #eeeee7;
+.button:hover {
+    background: #555;
+    color: white
+}
+
+.button.btn-red {
+    color: #DC3023;
+    border: 1px solid #DC3023
+}
+
+.button.btn-red:hover {
+    background: #DC3023;
+    color: white
+}
+
+.button.btn-green {
+    color: #26C281;
+    border: 1px solid #26C281
+}
+
+.button.btn-green:hover {
+    background: #26C281;
+    color: white
+}
+
+.button.btn-blue {
+    color: #22A7F0;
+    border: 1px solid #22A7F0;
+}
+
+.button.btn-blue:hover {
+    background: #22A7F0;
+    color: white
 }
 
 .center
@@ -61,16 +92,6 @@
 /* #endregion */
 
 /* #region Start screen */
-.start.screen {
-    background: -moz-linear-gradient(45deg, #4cb8c4 0%, #3cd3ad 100%);
-    background: -webkit-linear-gradient(45deg, #4cb8c4 0%,#3cd3ad 100%);
-    background: linear-gradient(45deg, #4cb8c4 0%,#3cd3ad 100%);
-    color: white
-}
-
-.start.screen .button {
-    border: 1px solid white
-}
 
 .modal-about {
     display: none;
@@ -129,15 +150,6 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  .start.screen .button {
-    border-radius: 100px;
-    border: 1px solid white;
-  }
-
-  .start.screen .button:hover {
-      color: black;
   }
 /* #endregion */
 
@@ -362,7 +374,8 @@ input[type="text"]
     padding: 5px 10px;
     font-size: 12px;
     border: none;
-    color: grey;
+    color: grey!important;
+    background: transparent;
     box-sizing: border-box;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -372,7 +385,7 @@ input[type="text"]
 input[type="text"]:focus
 {
     color: black;
-    border: 2px solid orangered;
+    border: 2px solid #81ecec;
     border-radius: 100px;
     outline: none;
     font-size: 16px;
